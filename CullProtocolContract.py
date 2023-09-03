@@ -145,15 +145,12 @@ class CullProtocolContractFunctions(ContractFunctions):
 class CullProtocolContract(Contract):
     """A web3.py Contract class for the CullProtocol contract."""
 
-    def __init__(self, address: ChecksumAddress | None = None, abi=Any) -> None:
+    def __init__(self, web3_instance, address: ChecksumAddress | None = None, abi=Any) -> None:
+        self.w3 = web3_instance
         self.abi = abi
         # TODO: make this better, shouldn't initialize to the zero address, but the Contract's init
         # function requires an address.
-        self.address = (
-            address
-            if address
-            else cast(ChecksumAddress, "0x0000000000000000000000000000000000000000")
-        )
+        self.address = address if address else cast(ChecksumAddress, "0x0000000000000000000000000000000000000000")
         try:
             # Initialize parent Contract class
             super().__init__(address=address)

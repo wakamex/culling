@@ -5,6 +5,7 @@ from test_fixtures import local_chain
 from deploy_cull import deploy_cull, initialize_deploy_account, initialize_web3_with_http_provider
 from web3 import HTTPProvider
 
+
 def test_cull(local_chain):
     """Deploy the Cull Protocol."""
     web3 = initialize_web3_with_http_provider(local_chain, reset_provider=False)
